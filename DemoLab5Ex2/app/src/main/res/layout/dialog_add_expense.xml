@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập Chi Tiêu"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/expense_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên chi tiêu (ví dụ: Ăn trưa, Xăng)"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/expense_amount_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số tiền (ví dụ: 50000)"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/save_expense_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lưu Chi Tiêu"/>
+
+</LinearLayout>

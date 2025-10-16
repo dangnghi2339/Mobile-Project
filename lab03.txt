@@ -1,0 +1,146 @@
+XML:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="100dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Input note here"
+        android:textSize="34sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+
+
+Main:
+package com.example.intentlab;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        super.onCreateOptionsMenu(menu);
+    // get context menu of app
+        MenuInflater inflater = getMenuInflater();
+    // set menu
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Sử dụng if-else if thay cho switch
+        if (item.getItemId() == R.id.clear) {
+            AlertDialog.Builder message = new AlertDialog.Builder(this);
+            message.setTitle(R.string.message_caption);
+            message.setMessage(R.string.message_content);
+            message.setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    EditText et = (EditText) findViewById(R.id.editText1);
+                    et.setText("");
+                }
+            }).show();
+        } else
+            if (item.getItemId() == R.id.setting) {
+            // Xử lý sự kiện setting
+        } else if (item.getItemId() == R.id.exit) {
+            // Xử lý sự kiện exit
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+
+
+
+menu:
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/clear"
+        android:alphabeticShortcut="@string/clear_shortcut"
+        android:title="@string/clear_label"/>
+    <item
+        android:id="@+id/setting"
+        android:alphabeticShortcut="@string/settings_shortcut"
+        android:title="@string/setting_label"/>
+    <item
+        android:id="@+id/exit"
+        android:alphabeticShortcut="@string/exit_shortcut"
+        android:title="@string/exit_label"/>
+</menu>
+
+
+
+
+string:
+<resources>
+    <string name="app_name">IntentLab</string>
+    <string name="clear_label">Clear</string>
+    <string name="clear_shortcut">Clear option</string>
+    <string name="setting_label">Setting</string>
+    <string name="settings_shortcut">Setting option</string>
+    <string name="exit_label">Exit</string>
+    <string name="exit_shortcut">Exit option</string>
+    <string name="message_caption">Message</string>
+    <string name="message_content">You selected Clear</string>
+    <string name="close">Close</string>
+    <string name="exit_caption">Exit application</string>
+    <string name="exit_content">Would you like to Exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>

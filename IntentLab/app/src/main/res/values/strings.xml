@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">IntentLab</string>
+    <string name="clear_label">Clear</string>
+    <string name="clear_shortcut">Clear option</string>
+    <string name="setting_label">Setting</string>
+    <string name="settings_shortcut">Setting option</string>
+    <string name="exit_label">Exit</string>
+    <string name="exit_shortcut">Exit option</string>
+    <string name="message_caption">Message</string>
+    <string name="message_content">You selected Clear</string>
+    <string name="close">Close</string>
+    <string name="exit_caption">Exit application</string>
+    <string name="exit_content">Would you like to Exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>

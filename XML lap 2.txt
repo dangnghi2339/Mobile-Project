@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- EditText hiển thị mảng -->
+
+        <!-- TextView hiển thị kết quả -->
+        <EditText
+            android:id="@+id/et_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Medium Text"
+            android:inputType="none" />
+
+        <TextView
+            android:id="@+id/tv_kq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Large Text"
+            android:textSize="18sp" />
+
+        <!-- Các nút chức năng -->
+        <Button
+            android:id="@+id/btn_taoday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Tạo dãy ngẫu nhiên"/>
+
+        <Button
+            android:id="@+id/btn_xuatxuoi"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Xuất xuôi"/>
+
+        <Button
+            android:id="@+id/btn_xuatnguoc"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Xuất ngược"/>
+
+        <Button
+            android:id="@+id/btn_minmax"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Tìm min max"/>
+
+        <Button
+            android:id="@+id/btn_sort"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Dãy tăng dần"/>
+
+        <Button
+            android:id="@+id/btn_sum3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Tổng 3 số đầu"/>
+
+        <Button
+            android:id="@+id/btn_lechan"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Số lẻ trước, số chẵn sau"/>
+
+    </LinearLayout>
+</ScrollView>

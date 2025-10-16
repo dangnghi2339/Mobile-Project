@@ -1,0 +1,125 @@
+Layout:
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập tháng (1-12)"
+        android:inputType="number"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập năm"
+        android:inputType="number"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tính số ngày"/>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Số ngày: "
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</LinearLayout>
+
+
+
+
+Main:
+
+package com.example.lab1b_2;
+
+import android.os.Bundle;
+import android.util.MonthDisplayHelper;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import java.time.MonthDay;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText etMonth;
+    private EditText etYear;
+    private Button btnCalculate;
+    private TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        etMonth = findViewById(R.id.et_month);
+        etYear = findViewById(R.id.et_year);
+        btnCalculate = findViewById(R.id.btn_calculate);
+        tvResult = findViewById(R.id.tv_result);
+
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculateDays();
+            }
+        });
+    }
+    private void calculateDays() {
+        // Lấy dữ liệu từ EditText và chuyển đổi sang số nguyên
+        String monthStr = etMonth.getText().toString();
+        String yearStr = etYear.getText().toString();
+
+        if (monthStr.isEmpty() || yearStr.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập đủ tháng và năm.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            int month = Integer.parseInt(monthStr);
+            int year = Integer.parseInt(yearStr);
+
+            // Gọi phương thức tính số ngày
+            int days = MonthDisplayHelper.getDaysInMonth(month, year);
+
+            if (days != -1) {
+                String result = "Tháng " + month + " năm " + year + " có " + days + " ngày.";
+                tvResult.setText(result);
+            } else {
+                tvResult.setText("Tháng không hợp lệ. Vui lòng nhập tháng từ 1 đến 12.");
+            }
+
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Vui lòng nhập số hợp lệ.", Toast.LENGTH_SHORT).show();
+        }
+    }
+}

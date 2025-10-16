@@ -1,0 +1,36 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"/>
+
+
+@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.clear:
+                // clear
+                AlertDialog.Builder message = new AlertDialog.Builder(this);
+                message.setTitle(R.string.message_caption);
+                message.setMessage(R.string.message_content);
+                message.setNeutralButton(R.string.close, new
+                    DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            EditText et = (EditText)findViewById(R.id.editText1);
+                            et.setText(""); // clear edittext content
+                        }
+                    }).show();
+                break;
+            case R.id.setting:
+                // setting
+                break;
+            case R.id.exit:
+                // exit
+                break;
+        } //end switch
+        return true;
+    }// end onOptionsItemSelected

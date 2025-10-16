@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShapeCalculator</string>
+    <string-array name="shapes_array">
+        <item>Square</item>
+        <item>Rectangle</item>
+        <item>Triangle</item>
+        <item>Circle</item>
+    </string-array>
+</resources>
